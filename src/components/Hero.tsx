@@ -46,18 +46,24 @@ const Hero = () => {
             <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-team-navy rounded-full opacity-20 animate-pulse-gentle" style={{ animationDelay: '1.5s' }}></div>
             
             <div className="relative overflow-hidden rounded-2xl shadow-xl">
-              <img 
-                src="/lovable-uploads/7169fe1f-1950-4671-838b-e3011410ea4f.png" 
-                alt="Wrocław Południe Ultimate Frisbee Team" 
+              <img
+                src="/lovable-uploads/7169fe1f-1950-4671-838b-e3011410ea4f.png"
+                alt="Wrocław Południe Ultimate Frisbee Team"
+                width={600}
+                height={400}
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
         </div>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer animate-bounce" onClick={scrollToNextSection}>
+        <button
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer animate-bounce bg-transparent border-none p-2 rounded-full hover:bg-team-teal/10 transition-colors focus:outline-none focus:ring-2 focus:ring-team-teal"
+          onClick={scrollToNextSection}
+          aria-label="Przewiń do sekcji drużyny"
+        >
           <ChevronDown size={36} className="text-team-teal" />
-        </div>
+        </button>
       </div>
       
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10"></div>

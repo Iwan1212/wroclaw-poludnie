@@ -9,30 +9,50 @@ const JoinUs = () => {
     message: '',
     experience: 'beginner'
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+  const [submitError, setSubmitError] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+    setSubmitError(false);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xpwzgkqj', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          experience: formData.experience,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '', experience: 'beginner' });
+
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        setSubmitError(true);
+      }
+    } catch {
+      setSubmitError(true);
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '', experience: 'beginner' });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
+    }
   };
   
   return (
@@ -81,11 +101,17 @@ const JoinUs = () => {
             <div className="relative">
               <h3 className="text-2xl font-bold text-team-navy mb-6">Formularz Kontaktowy</h3>
               
-              {isSubmitted ? (
+              {isSubmitted && (
                 <div className="bg-green-50 border border-green-200 text-green-700 rounded-lg p-4 mb-6">
                   Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce.
                 </div>
-              ) : null}
+              )}
+
+              {submitError && (
+                <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-6">
+                  Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio.
+                </div>
+              )}
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>

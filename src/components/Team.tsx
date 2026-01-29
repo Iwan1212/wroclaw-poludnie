@@ -19,9 +19,12 @@ const Team = () => {
           <div className="absolute -right-4 -bottom-4 w-20 h-20 bg-team-navy rounded-full opacity-20 md:block hidden"></div>
           
           <div className="relative rounded-2xl overflow-hidden shadow-lg">
-            <img 
-              src="/lovable-uploads/7169fe1f-1950-4671-838b-e3011410ea4f.png" 
-              alt="Wrocław Południe Team" 
+            <img
+              src="/lovable-uploads/7169fe1f-1950-4671-838b-e3011410ea4f.png"
+              alt="Wrocław Południe Team"
+              width={1200}
+              height={600}
+              loading="lazy"
               className="w-full h-auto object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-team-navy to-transparent opacity-70"></div>

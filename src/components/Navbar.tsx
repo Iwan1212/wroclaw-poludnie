@@ -58,16 +58,23 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-team-navy" onClick={toggleMenu}>
+        <button
+          className="md:hidden text-team-navy"
+          onClick={toggleMenu}
+          aria-label={isOpen ? 'Zamknij menu' : 'Otwórz menu'}
+          aria-expanded={isOpen}
+        >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <div 
+      <div
         className={`fixed inset-0 bg-white z-40 flex flex-col pt-24 pb-8 px-6 transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } md:hidden`}
+        role="navigation"
+        aria-label="Menu mobilne"
       >
         <a 
           href="#team" 
