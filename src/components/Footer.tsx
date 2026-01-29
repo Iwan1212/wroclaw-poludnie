@@ -10,10 +10,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
             <div className="flex items-center space-x-3 mb-6">
-              <img 
-                src="/lovable-uploads/23211fdb-be78-4cd6-ad64-e5ffefed8880.png" 
-                alt="Wrocław Południe Ultimate Frisbee Team" 
-                className="h-12 bg-white rounded-full p-1"
+              <img
+                src="/lovable-uploads/23211fdb-be78-4cd6-ad64-e5ffefed8880.png"
+                alt="Wrocław Południe Ultimate Frisbee Team"
+                width={48}
+                height={48}
+                loading="lazy"
+                className="h-12 w-12 bg-white rounded-full p-1"
               />
               <div className="font-bold text-lg">Wrocław Południe</div>
             </div>
@@ -22,13 +25,13 @@ const Footer = () => {
               Dołącz do nas i odkryj dynamiczny świat Ultimate Frisbee!
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-white bg-opacity-10 hover:bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center transition-all">
+              <a href="#" className="bg-white bg-opacity-10 hover:bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center transition-all" aria-label="Facebook">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="bg-white bg-opacity-10 hover:bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center transition-all">
+              <a href="#" className="bg-white bg-opacity-10 hover:bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center transition-all" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="bg-white bg-opacity-10 hover:bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center transition-all">
+              <a href="#" className="bg-white bg-opacity-10 hover:bg-opacity-20 w-10 h-10 rounded-full flex items-center justify-center transition-all" aria-label="Email">
                 <Mail size={20} />
               </a>
             </div>
